@@ -1,18 +1,18 @@
 import {Buffer} from 'node:buffer';
-import execBuffer from 'exec-buffer';
+import execBuffer, {input as execInput, output as execOutput} from 'exec-buffer';
 import isJpg from 'is-jpg';
 import isPng from 'is-png';
-import avifenc from '@vheemstra/avifenc-bin';
+import avifenc from 'avifenc-bin';
 
 const imageminAvifenc = (options = {}) => input => {
 	options = {...options};
 
 	if (!Buffer.isBuffer(input)) {
-		return Promise.reject(new TypeError(`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``));
+		throw new TypeError(`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``);
 	}
 
 	if (!isJpg(input) && !isPng(input)) {
-		return Promise.resolve(input);
+		return input;
 	}
 
 	// See: https://github.com/AOMediaCodec/libavif/blob/master/apps/avifenc.c#L51
@@ -212,7 +212,7 @@ const imageminAvifenc = (options = {}) => input => {
 		args.push('--maxalpha', options.maxalpha);
 	}
 
-	args.push('-o', execBuffer.output, execBuffer.input);
+	args.push('-o', execOutput, execInput);
 
 	return execBuffer({
 		input,

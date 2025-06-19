@@ -4,10 +4,9 @@
 
 ## Install
 
+```shell
+npm install --save @vheemstra/imagemin-avifenc
 ```
-$ npm install --save @vheemstra/imagemin-avifenc
-```
-
 
 ## Usage
 
@@ -16,17 +15,16 @@ import imagemin from 'imagemin';
 import imageminAvifenc from '@vheemstra/imagemin-avifenc';
 
 (async () => {
-	await imagemin(['images/*.{jpg,jpeg,png}'], {
-		destination: 'build/images',
-		plugins: [
-			imageminAvifenc()
-		]
-	});
+  await imagemin(['images/*.{jpg,jpeg,png}'], {
+    destination: 'build/images',
+    plugins: [
+      imageminAvifenc()
+    ]
+  });
 
-	console.log('Images converted!');
+  console.log('Images converted!');
 })();
 ```
-
 
 ## API
 
@@ -174,6 +172,7 @@ Type: `string`<br>
 Default: `aom`
 
 AV1 codec to use, choose from:
+
 * `aom` - version 2.0.0
 
 ##### exif
@@ -262,7 +261,7 @@ Default: `null`
 
 Object containing codec-specific key/value pairs to pass directly to the codec.<br>
 For `aom` these can be:
-```
+```json
 {
   'aq-mode': ...,              // Adaptive quantization mode (0: off (default), 1: variance, 2: complexity, 3: cyclic refresh)
   'cq-level': ...,             // Constant/Constrained Quality level (0-63, end-usage must be set to cq or q)
@@ -278,7 +277,6 @@ For `aom` these can be:
 Type: `Buffer`
 
 Buffer to optimize.
-
 
 ## License
 

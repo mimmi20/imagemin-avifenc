@@ -261,6 +261,7 @@ Default: `null`
 
 Object containing codec-specific key/value pairs to pass directly to the codec.\
 For `aom` these can be:
+
 ```json
 {
   'aq-mode': ...,              // Adaptive quantization mode (0: off (default), 1: variance, 2: complexity, 3: cyclic refresh)

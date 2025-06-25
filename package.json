@@ -51,7 +51,7 @@
   ],
   "dependencies": {
     "avifenc-bin": "github:mimmi20/avifenc-bin#master",
-    "exec-buffer": "github:mimmi20/exec-buffer#master",
+    "exec-buffer": "^3.2.0",
     "is-jpg": "^3.0.0",
     "is-png": "^3.0.1"
   },
